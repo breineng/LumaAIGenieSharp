@@ -113,7 +113,7 @@ namespace LumaGenie
             using ZipArchive archive = new ZipArchive(zipStream);
             foreach (ZipArchiveEntry entry in archive.Entries)
             {
-                await using Stream entryStream = entry.Open();
+                using Stream entryStream = entry.Open();
                 onFileExtracted?.Invoke(entry.FullName, entryStream);
             }
         }

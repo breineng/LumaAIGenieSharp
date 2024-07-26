@@ -23,10 +23,10 @@ namespace LumaGenie.Converters
                 if (property.Name.StartsWith("export_") && property.Value.Type == JTokenType.Boolean &&
                     (bool)property.Value)
                 {
-                    var formatString = property.Name["export_".Length..];
+                    var formatString = property.Name.Substring("export_".Length);
                     if (Enum.TryParse(formatString, true, out ExportFormat format))
                     {
-                        return new ConvertJobParams() {Format = format};
+                        return new ConvertJobParams() { Format = format };
                     }
                 }
             }
